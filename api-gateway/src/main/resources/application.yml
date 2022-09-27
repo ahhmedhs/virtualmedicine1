@@ -1,0 +1,66 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://18.141.31.199:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
+
+server:
+  port: 8080
+
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+            exposedHeaders: "*"
+      routes:
+        - id: userservice
+          uri: http://18.141.31.199:8081
+          predicates:
+            - Path=/userservice/**
+          filters:
+            - RewritePath=/userservice(?<segment>/?.*), $\{segment}
+
+        - id: authenticationservice
+          uri: http://18.141.31.199:9100
+          predicates:
+            - Path=/authenticationservice/**
+          filters:
+            - RewritePath=/authenticationservice(?<segment>/?.*), $\{segment}
+
+        - id: emailservice
+          uri: http://18.141.31.199:8075
+          predicates:
+            - Path=/emailservice/**
+          filters:
+            - RewritePath=/emailservice(?<segment>/?.*), $\{segment}
+
+        - id: chatservice
+          uri: http://18.141.31.199:8070
+          predicates:
+            - Path=/chatservice/**
+          filters:
+            - RewritePath=/chatservice(?<segment>/?.*), $\{segment}
+
+        - id: appointmentservice
+          uri: http://18.141.31.199:8060
+          predicates:
+            - Path=/appointmentservice/**
+          filters:
+            - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
+
+        - id: webapp
+          uri: http://18.141.31.199:4200
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=(?<segment>/?.*), $\{segment}

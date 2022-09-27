@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5dc4f314.css",
+    "main.js": "/static/js/main.31f6322a.js",
+    "static/js/787.58120901.chunk.js": "/static/js/787.58120901.chunk.js",
+    "static/media/register.jpg": "/static/media/register.0dc42b0db70a379f98c9.jpg",
+    "static/media/pulmonology.svg": "/static/media/pulmonology.958330521ca741d6d56a49141024f730.svg",
+    "static/media/ent.svg": "/static/media/ent.68da755496db4990aa5ec971e5925c4c.svg",
+    "static/media/operation.svg": "/static/media/operation.92ef58d8b8eab546554e9158cd241502.svg",
+    "static/media/general.svg": "/static/media/general.2782b9c28d35b5329ff2e0655102796c.svg",
+    "static/media/time.svg": "/static/media/time.e998bda975d4360c68e4.svg",
+    "index.html": "/index.html",
+    "static/media/drag-vertical.svg": "/static/media/drag-vertical.de8c7b59e7765c0b0bf7.svg",
+    "static/media/drag-horizontal.svg": "/static/media/drag-horizontal.2cdc12303986fbab86dd.svg",
+    "static/media/agenda-calendar.svg": "/static/media/agenda-calendar.32a042609adfede2d37d.svg",
+    "static/media/calendar.svg": "/static/media/calendar.32a042609adfede2d37d.svg",
+    "static/media/menu-down.svg": "/static/media/menu-down.92648bacd6899f53c1d2.svg",
+    "static/media/arrow_left.svg": "/static/media/arrow_left.bca1c0d132224bf0f675.svg",
+    "static/media/arrow_left_hov.svg": "/static/media/arrow_left_hov.bca1c0d132224bf0f675.svg",
+    "static/media/arrow_right.svg": "/static/media/arrow_right.6d8b5294b7cb5bad6755.svg",
+    "static/media/arrow_right_hov.svg": "/static/media/arrow_right_hov.6d8b5294b7cb5bad6755.svg",
+    "static/media/tree_arrow.svg": "/static/media/tree_arrow.ece45f84d7e6c54cc99e.svg",
+    "main.5dc4f314.css.map": "/static/css/main.5dc4f314.css.map",
+    "main.31f6322a.js.map": "/static/js/main.31f6322a.js.map",
+    "787.58120901.chunk.js.map": "/static/js/787.58120901.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5dc4f314.css",
+    "static/js/main.31f6322a.js"
+  ]
+}

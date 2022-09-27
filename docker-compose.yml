@@ -1,0 +1,141 @@
+version: '2'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "root"
+      RABBITMQ_DEFAULT_PASS: "root123"
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongo-container
+    network_mode: "host"
+    hostname: 18.141.31.199
+    ports:
+      - 27017:27017
+
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    restart: always
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 3306:3306
+    #    cap_add:
+    #      - SYS_NICE
+    environment:
+      MYSQL_ROOT_PASSWORD: 'Password'
+      MYSQL_USERNAME: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+
+
+  eureka-server:
+    container_name: eureka-server
+    build: eureka-server/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 8761:8761
+    restart: always
+
+  api-gateway:
+    container_name: api-gateway
+    build: api-gateway/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 8080:8080
+    depends_on:
+      - eureka-server
+    restart: always
+
+  user-service:
+    container_name: user-service
+    build: user-service/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 8081:8081
+    depends_on:
+      - mongodb
+      - eureka-server
+    restart: always
+
+  authentication-service:
+    container_name: authentication-service
+    build: authentication-service/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 9100:9100
+    depends_on:
+      - eureka-server
+      - mysql
+    restart: always
+
+  appointment-service:
+    container_name: appointment-service
+    build: appointment-service/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 8060:8060
+    depends_on:
+      - eureka-server
+    restart: always
+
+  chat-service:
+    container_name: chat-service
+    build: chat-service/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 8070:8070
+    depends_on:
+      - eureka-server
+    restart: always
+
+  email-service:
+    container_name: email-service
+    build: email-service/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 8075:8075
+    depends_on:
+      - eureka-server
+    restart: always
+
+  webapp:
+    container_name: webapp
+    build: product-webapp/
+    hostname: 18.141.31.199
+    network_mode: "host"
+    ports:
+      - 4200:4200
+    depends_on:
+      - eureka-server
+    restart: always
+
+#  text-chat:
+#    container_name: text-chat
+#    build: product-webapp/chat-server/
+#    hostname: 18.141.31.199
+#    network_mode: "host"
+#    ports:
+#      - "3030:3030"
+#    restart: always
+#
+#  video-chat:
+#    container_name: video-chat
+#    build: product-webapp/video_server/
+#    hostname: 18.141.31.199
+#    network_mode: "host"
+#    ports:
+#      - "5000:5000"
+#    restart: always
+
