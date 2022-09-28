@@ -1,9 +1,9 @@
 eureka:
   client:
     service-url:
-      defaultZone: http://18.141.31.199:8761/eureka
-    register-with-eureka: true
-    fetch-registry: true
+      defaultZone: http://localhost:8761/eureka
+    register-with-eureka: false
+    fetch-registry: false
 
 server:
   port: 8080
@@ -24,42 +24,42 @@ spring:
             exposedHeaders: "*"
       routes:
         - id: userservice
-          uri: http://18.141.31.199:8081
+          uri: http://localhost:8081
           predicates:
             - Path=/userservice/**
           filters:
             - RewritePath=/userservice(?<segment>/?.*), $\{segment}
 
         - id: authenticationservice
-          uri: http://18.141.31.199:9100
+          uri: http://localhost:9100
           predicates:
             - Path=/authenticationservice/**
           filters:
             - RewritePath=/authenticationservice(?<segment>/?.*), $\{segment}
 
         - id: emailservice
-          uri: http://18.141.31.199:8075
+          uri: http://localhost:8075
           predicates:
             - Path=/emailservice/**
           filters:
             - RewritePath=/emailservice(?<segment>/?.*), $\{segment}
 
         - id: chatservice
-          uri: http://18.141.31.199:8070
+          uri: http://localhost:8070
           predicates:
             - Path=/chatservice/**
           filters:
             - RewritePath=/chatservice(?<segment>/?.*), $\{segment}
 
         - id: appointmentservice
-          uri: http://18.141.31.199:8060
+          uri: http://localhost:8060
           predicates:
             - Path=/appointmentservice/**
           filters:
             - RewritePath=/appointmentservice(?<segment>/?.*), $\{segment}
 
         - id: webapp
-          uri: http://18.141.31.199:4200
+          uri: http://localhost:4200
           predicates:
             - Path=/**
           filters:
